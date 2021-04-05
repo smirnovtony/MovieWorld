@@ -20,6 +20,7 @@
 		03C41DF82615FD6C0055D985 /* MWMoviesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C41DF72615FD6C0055D985 /* MWMoviesController.swift */; };
 		03C41E1326163FCA0055D985 /* MWMovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C41E1226163FCA0055D985 /* MWMovieModel.swift */; };
 		03C41E1726163FEE0055D985 /* Date+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C41E1626163FEE0055D985 /* Date+Ex.swift */; };
+		EA13484B261A052D0022E78E /* MWMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA13484A261A052D0022E78E /* MWMovieCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		03C41DF72615FD6C0055D985 /* MWMoviesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWMoviesController.swift; sourceTree = "<group>"; };
 		03C41E1226163FCA0055D985 /* MWMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWMovieModel.swift; sourceTree = "<group>"; };
 		03C41E1626163FEE0055D985 /* Date+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ex.swift"; sourceTree = "<group>"; };
+		EA13484A261A052D0022E78E /* MWMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWMovieCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 		03C41DF52615FD510055D985 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				EA13484226164BE70022E78E /* Views */,
 				03C41E0F26163FA00055D985 /* Models */,
 				03C41DF62615FD5F0055D985 /* Controllers */,
 			);
@@ -181,6 +184,22 @@
 				03C41E1226163FCA0055D985 /* MWMovieModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EA13484226164BE70022E78E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EA13484326164BF30022E78E /* Cell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EA13484326164BF30022E78E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EA13484A261A052D0022E78E /* MWMovieCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +280,7 @@
 			files = (
 				03C41DF82615FD6C0055D985 /* MWMoviesController.swift in Sources */,
 				03C41DBD2615DBFC0055D985 /* MWViewController.swift in Sources */,
+				EA13484B261A052D0022E78E /* MWMovieCell.swift in Sources */,
 				03C41E1326163FCA0055D985 /* MWMovieModel.swift in Sources */,
 				03C41E1726163FEE0055D985 /* Date+Ex.swift in Sources */,
 				03C41DE12615E13B0055D985 /* UIEdgeInsets+Ex.swift in Sources */,

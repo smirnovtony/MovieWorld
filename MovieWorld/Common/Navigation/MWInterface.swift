@@ -53,6 +53,4 @@ class MWInterface {
     func set(vc: UIViewController) {
         self.navController.setViewControllers([vc], animated: true)
     }
-
-
 }
