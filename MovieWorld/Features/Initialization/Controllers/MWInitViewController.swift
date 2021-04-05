@@ -48,7 +48,7 @@ class MWInitViewController: MWViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.indicator.stopAnimating()
 
-            MWI.sh.set(vc: MWMoviesController())
+            MWI.sh.setTabBar()
         }
     }
 }

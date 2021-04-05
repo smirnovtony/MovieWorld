@@ -15,6 +15,12 @@ class MWInterface {
 
     weak var window: UIWindow?
 
+    private var currentNavController: UINavigationController {
+        (self.tabBarController.selectedViewController as? UINavigationController) ?? self.navController
+    }
+
+    private lazy var tabBarController = MWMainTabBarController()
+
     private lazy var navController = UINavigationController(rootViewController: MWInitViewController())
 
     private init() {}
@@ -43,14 +49,25 @@ class MWInterface {
     }
 
     func push(vc: UIViewController) {
-        self.navController.pushViewController(vc, animated: true)
+        self.currentNavController.pushViewController(vc, animated: true)
     }
 
     func popVС() {
-        self.navController.popViewController(animated: true)
+        self.currentNavController.popViewController(animated: true)
     }
 
     func set(vc: UIViewController) {
-        self.navController.setViewControllers([vc], animated: true)
+        self.currentNavController.setViewControllers([vc], animated: true)
+    }
+
+    func setTabBar() {
+        guard let window = self.window else { return }
+
+        window.rootViewController = self.tabBarController
+
+        UIView.transition(with: window,
+                          duration: 0.5,
+                          options: .transitionFlipFromLeft,
+                          animations: nil)
     }
 }
