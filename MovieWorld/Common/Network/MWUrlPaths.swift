@@ -10,4 +10,5 @@ import Foundation
 struct MWUrlPaths {
     static let popularMovies = "movie/popular"
     static let upcomingMovies = "movie/upcoming"
+    static let topRatedMovies = "movie/top_rated"
 }

@@ -31,6 +31,7 @@
 		EA134862261B858D0022E78E /* Url+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA134861261B858D0022E78E /* Url+Ex.swift */; };
 		EA134865261B91EF0022E78E /* MWUrlPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA134864261B91EF0022E78E /* MWUrlPaths.swift */; };
 		EA134868261B94450022E78E /* MWUpcomingResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA134867261B94450022E78E /* MWUpcomingResponseModel.swift */; };
+		EA134874261E266B0022E78E /* MWTopRatedResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA134873261E266B0022E78E /* MWTopRatedResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		EA134861261B858D0022E78E /* Url+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Url+Ex.swift"; sourceTree = "<group>"; };
 		EA134864261B91EF0022E78E /* MWUrlPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWUrlPaths.swift; sourceTree = "<group>"; };
 		EA134867261B94450022E78E /* MWUpcomingResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWUpcomingResponseModel.swift; sourceTree = "<group>"; };
+		EA134873261E266B0022E78E /* MWTopRatedResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWTopRatedResponseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 				03E0A849261B486000BD04B4 /* MWMovie.swift */,
 				EA13485A261B809C0022E78E /* MWPopularMoviesResponse.swift */,
 				EA134867261B94450022E78E /* MWUpcomingResponseModel.swift */,
+				EA134873261E266B0022E78E /* MWTopRatedResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				03C41DE12615E13B0055D985 /* UIEdgeInsets+Ex.swift in Sources */,
 				03C41DB92615DBFC0055D985 /* AppDelegate.swift in Sources */,
 				EA134862261B858D0022E78E /* Url+Ex.swift in Sources */,
+				EA134874261E266B0022E78E /* MWTopRatedResponseModel.swift in Sources */,
 				03E0A839261B476000BD04B4 /* MWMainTabBarController.swift in Sources */,
 				03C41DE82615F0CD0055D985 /* MWInterface.swift in Sources */,
 				03C41DEF2615FAE10055D985 /* MWInitViewController.swift in Sources */,
