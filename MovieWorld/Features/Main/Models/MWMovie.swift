@@ -7,6 +7,11 @@
 
 import UIKit
 
-class MWMovie {
+class MWMovie: Decodable {
+    let id: Int
+    let poste_path: String?
+    let title: String
+    let overview: String?
+    let release_date: String
 
 }

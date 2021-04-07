@@ -11,6 +11,8 @@ class MWMainViewController: MWViewController {
 
     enum MovieCategory: String {
         case popular = "Popular"
+        case upcoming = "Upcoming"
+        case hot = "Hot"
     }
 
     private var movies: [MovieCategory: [MWMovie]] = [:]
@@ -31,7 +33,7 @@ class MWMainViewController: MWViewController {
         view.rowHeight = 305
         view.tableFooterView = UIView()
         view.separatorStyle = .none
-        view.refreshControl = self.refreshControl
+        view.refreshControl = self.refreshControl // штука крутелка загрузки 
 
         view.register(MWRowCell.self, forCellReuseIdentifier: MWRowCell.reuseIdentifier)
 
@@ -48,10 +50,52 @@ class MWMainViewController: MWViewController {
         self.tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+
+        self.sendPopularRequest()
     }
 
     @objc private func refreshPulled() {
+        self.sendPopularRequest()
         // refresh logic
+    }
+
+    private func sendUpcomingRequest() {
+        MWNetwork.sh.request(urlPath: MWUrlPaths.upcomingMovies) { [weak self] (upcomingMuviesModel: MWUpcomingResponseModel) in
+         // parse moview to table
+        } errorHandler: {
+            if self.refreshControl.isRefreshing { // принудительно прекращаем крутить штуку загрузки
+                self.refreshControl.endRefreshing()
+            }
+            print("errorHandler")
+            // доделать алерт
+        }
+
+
+    }
+
+    private func sendPopularRequest() {
+        MWNetwork.sh.request(urlPath: MWUrlPaths.popularMovies) { [weak self] (popularMoviesModel: MWPopularMoviesResponse) in
+            guard let self = self else { return } // принудительно прекращаем крутить штуку загрузки
+            if self.refreshControl.isRefreshing {
+                self.refreshControl.endRefreshing()
+            }
+            self.movies[.popular] = popularMoviesModel.results
+            self.movies[.upcoming] = popularMoviesModel.results
+            self.movies[.hot] = popularMoviesModel.results
+            self.tableView.reloadData()
+
+            popularMoviesModel.results.forEach {
+                        Swift.debugPrint("id: \($0.id)")
+                        Swift.debugPrint($0.title)
+                        Swift.debugPrint($0.overview ?? "No overview")
+                    }
+        } errorHandler: {
+            if self.refreshControl.isRefreshing { // принудительно прекращаем крутить штуку загрузки
+                self.refreshControl.endRefreshing()
+            }
+            print("errorHandler")
+            // доделать алерт
+        }
     }
 
 }

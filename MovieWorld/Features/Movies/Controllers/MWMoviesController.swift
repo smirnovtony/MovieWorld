@@ -42,9 +42,8 @@ class MWMoviesController: MWViewController {
 
     private lazy var collectionLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.estimatedItemSize = .zero
-
+        layout.scrollDirection = .vertical // направление строла - .вертикальное
+//        layout.estimatedItemSize = .zero 
         return layout
     }()
 
@@ -52,52 +51,55 @@ class MWMoviesController: MWViewController {
         let view = UICollectionView(frame: .zero,
                                     collectionViewLayout: self.collectionLayout)
         view.backgroundColor = .white
-        view.showsVerticalScrollIndicator = false
-        view.showsHorizontalScrollIndicator = false
-        view.delegate = self
-        view.dataSource = self
+        view.showsVerticalScrollIndicator = false // скрыть вертикальный скрол
+        view.showsHorizontalScrollIndicator = false // скрыть горизонтальный скрол
+        view.delegate = self // обязательно
+        view.dataSource = self // обязательно
         view.register(MWMovieCell.self,
-                      forCellWithReuseIdentifier: MWMovieCell.reuseIdentifier)
-
+                      forCellWithReuseIdentifier: MWMovieCell.reuseIdentifier) // регистрация ячейки MWMovieCell
     return view
     }()
 
-// MARK:
+// MARK: -Initialozations
 
     override func initController() {
         super.initController()
 
         self.controllerTitle = "Movies"
 
-        self.setContentScrolling(isEnabled: false)
-        self.mainView.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { (make) in
+        self.setContentScrolling(isEnabled: false) // чтобы контент скролился. Кастомная доработака Анастасии EX
+
+        self.mainView.addSubview(self.collectionView) // добавление коллекции
+        self.collectionView.snp.makeConstraints { (make) in // добавление констрейнтов для коллекции
             make.edges.equalToSuperview()
         }
     }
 }
+
+//MARK: - Extensions
 
 extension MWMoviesController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.models.count
     }
 
+    // создание ячейки и её логики
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MWMovieCell.reuseIdentifier, for: indexPath)
-        if let cell = cell as? MWMovieCell {
+        if let cell = cell as? MWMovieCell { // приведение ячйки в к типу MWMovieCell
             cell.set(title: "Movie # \(indexPath.row + 1)", date: Date())
         }
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        Swift.debugPrint(indexPath.row)
+        Swift.debugPrint(indexPath.row) // вывод в консоль
     }
 
 }
 
 extension MWMoviesController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize { // функция размера ячейки коллекции
 //        return CGSize(width: 115, height: 115)
         let availableWidth = collectionView.bounds.width - self.contentInset.left - self.contentInset.right
         let width = ((availableWidth - self.spaceBetweenCells * (self.cellsPerRow - 1)) / self.cellsPerRow)
@@ -106,11 +108,13 @@ extension MWMoviesController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 20 // отступы между ячейками
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(all: 5)
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(all: 5) // отступы всей коллекции
     }
 
 }

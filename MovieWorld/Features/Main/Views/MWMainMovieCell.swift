@@ -72,7 +72,8 @@ class MWMainMovieCell: UICollectionViewCell {
 
     func set(movie: MWMovie) {
         self.logoView.image = UIImage(named: "movieStub")
-        // TODO: - add files prasing
+        self.titleLabel.text = movie.title
+        self.descriptionLabel.text = movie.overview
 
         self.setNeedsUpdateConstraints()
     }
